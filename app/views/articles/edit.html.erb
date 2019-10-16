@@ -1,0 +1,10 @@
+<% @pagetitle = "Edit News"%>
+<h1><%= @pagetitle %></h1>
+
+<p><%= link_to "Back to news page", @article %></p>
+
+<%= form_for @article do |form| %>
+  <%= render "form", form: form %>
+  <div><%= form.submit %></div>
+<% end %>
+

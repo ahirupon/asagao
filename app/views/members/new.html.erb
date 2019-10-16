@@ -1,0 +1,9 @@
+<% @pagetitle = "Register user"%>
+<h1><%= @pagetitle %></h1>
+<%= form_for @member do |form| %>
+
+  <%= render "shared/member_form", form:form %>
+  
+  <div><%= form.submit %></div>
+  
+<%end%>

@@ -1,0 +1,12 @@
+<% @pagetitle = "Edit user info" %>
+<h1><%= @pagetitle %></h1>
+
+<div class="toolbar"><%= link_to "Back to detaile of member info", @member %></div>
+
+<%= form_for @member do |form| %>
+  
+  <%= render "shared/member_form", form:form %>
+  <div><%= form.submit %></div>
+
+<%end%>
+

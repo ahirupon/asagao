@@ -1,0 +1,10 @@
+<% pagetitle = "My account" %>
+<h1><%= pagetitle %></h1>
+
+<ul class="toolbar">
+  <!--:edit_accountはaccountscontrollerのeditメゾット-->
+  <%= menu_link_to "Edit account information", :edit_account %> 
+  <%= menu_link_to "Edit password", :edit_password %>
+</ul>
+
+  <%= render "members/body" %>

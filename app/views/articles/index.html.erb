@@ -1,0 +1,31 @@
+<% @pagetitle = "News title list" %>
+<h1><%= @pagetitle %></h1>
+
+<div id="toolbar"><%= link_to "Create", :new_article %></div>
+
+<% if @articles.present? %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Day</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= link_to article.title, article %></td>
+          <td><%= article.released_at.strftime("%Y/%m/%d/%H:%M")%></td>
+          <td>
+            <%= link_to "Edit", [:edit, article] %> | 
+            <%= link_to "Delete", article, method: :delete, data: {confirm: "本当に削除しますか？"} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    </tabel>
+    <%= paginate @articles %>
+    <% else %>
+    <p>not found</p>
+<% end %>

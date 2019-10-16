@@ -1,0 +1,18 @@
+<ul class="entry_footer">
+  <% if current_member %>
+   <li><%= Entry.status_text(entry.status) %></li>
+   <!--ログイン状態のユーザーは著者か？-->
+   <% if current_member == entry.author %> 
+     <%= menu_link_to "edit", [:edit, entry]%>
+     <%= menu_link_to "delete", entry, method: :delete, data: {confirm: "本当に削除しますか？"}%>
+  <% end %>
+  <% end %>
+  
+  <li>
+    <!--著者のユーザー名を会員ごとの記事一覧ページのリンクにしている-->
+    by<%= link_to entry.author.name, [entry.author, :entries] %> 
+  </li>
+  <li>
+    <%= entry.posted_at.strftime("%Y/%m/%d %H:%M")%>
+  </li>
+</ul>

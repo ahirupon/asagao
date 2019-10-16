@@ -1,0 +1,20 @@
+<%= image_tag "logo.gif", size: "272x48", alt: "morning glory"%>
+<% if current_member %>
+  <ul class="account-menu">
+    <%= current_member.name %>
+    <%= menu_link_to "ログアウト", :session, method: :delete, data: {confirm: "ログアウトしますか？"}%>
+  </ul>
+<%end%>
+<nav>
+  <ul class="account-menu">
+    <%= menu_link_to "TOP", root_path %>
+    <%= menu_link_to "News", articles_path %>
+    <%= menu_link_to "Blog", entries_path %>
+    <!--セッション状態でのみ表示する-->
+    <% if current_member %>
+      <%= menu_link_to "#{mr_or_ms?}#{current_member.name}", :account %>
+      <%= menu_link_to "Admin", "#" %>
+      <%= menu_link_to "members", :members %>
+    <% end %>
+  </ul>
+</nav>

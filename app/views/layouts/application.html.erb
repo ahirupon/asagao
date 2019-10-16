@@ -4,12 +4,30 @@
     <title>Asagao</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+　　<!--<meta http-equiv="refresh" content="2; URL=">-->
+　　
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <div id="container">
+    <header>
+      <%= render "shared/header" %>
+    </header>
+    <main>
+      <% if flash.notice %>
+        <p class="notice"><%= flash.notice %></p>
+      <% end %>
+      <%= yield %>
+    </main>
+    <aside id="sidebar">
+      <%= render "shared/sidebar" %>
+    </aside>
+    <footer>
+      <%- render "shared/footer" %>
+    </footer>
+  </div>
   </body>
 </html>

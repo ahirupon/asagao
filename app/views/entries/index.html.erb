@@ -1,0 +1,21 @@
+<% page_title = @member? "#{mr_or_ms?}" + "'s blog" : "member blog"%>
+
+<h1><%= @page_title %></h1>
+<!--ユーザーがログイン状態であればブログ記事を作成するnewアクションのリンクを表示する-->
+<% if current_member %>
+  <div class="tool_bar">
+    <%= link_to "Create blog", :new_entry %>
+  </div>
+<% end %>
+
+<% if @entries.present? %>
+  <% @entries.each do |entry| %>
+    <h2><%= entry.title %></h2>
+    <p><%= truncate(entry.body, length: 80)%>
+       <%= link_to "more read", entry%></p>
+    <%= render "footer", entry: entry %>
+  <% end %>
+<% else %>
+ <p>Not found</p>
+<% end %>
+

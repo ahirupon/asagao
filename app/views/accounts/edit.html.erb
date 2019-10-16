@@ -1,0 +1,12 @@
+<% @pagetitle = "Edit account information" %>
+
+  <h1><%= @pagetitle %></h1>
+
+  <div class="toolbar">
+    <%= link_to "Back to My account."%>
+  </div>
+<!--パラメータ名送信先のurlを/accountにしてある、でないとパラメータ名はmemberになり送信先のurlがmembers/123のようになる-->
+  <%= form_for @member, as:"account", url: :account do |form| %>
+  <%= render "shared/member_form", form: form %>
+  <div><%= form.submit %></div>
+<% end %>

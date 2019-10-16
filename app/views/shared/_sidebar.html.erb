@@ -1,0 +1,24 @@
+<!--current_memberがtrueつまりセッション状態でなければ表示する-->
+<%= render "shared/login_form" unless current_member %> 
+
+<h2>The latest News</h2>
+
+<!--scopeのvisibleとlimit.5で公開期間と数をソートした後、さらにscopeのopen_to_the_publicとunless current_member で会員限定でないものとログインでない場合か？を確認している-->
+<% articles = Article.visible.order(released_at: :desc).limit(5) 
+   articles = articles.open_to_the_public unless current_member
+%>
+
+
+<ul>
+  <% articles.each do |article| %>
+    <li><%= link_to article.title, article %></li>
+  <% end %>
+</ul>
+
+<h2>Member's Blogs</h2>
+
+<ul>
+  <% 5.times do %>
+    <li><%= link_to "Blog", "#" %></li>
+  <% end %>
+</ul>
